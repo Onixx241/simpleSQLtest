@@ -28,6 +28,7 @@ class SqlConnector
         this.sqlConnection.ConnectionString = this.ConnectionString;
         this.sqlConnection.Open();
         RunCommand("SELECT * FROM Emps");
+        this.sqlConnection.Close();
 
     }
 
@@ -46,7 +47,7 @@ class SqlConnector
     }
 }
 
-class Mainn() 
+class Program() 
 {
     static void Main()
     {
