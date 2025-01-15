@@ -68,6 +68,25 @@ class SqlConnector
         }
         this.sqlConnection.Close();
     }
+    public void PrintTable() 
+    {
+        using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+        {
+            using (SqlCommand cmd = new SqlCommand("SELECT EmployeeID,FirstName,LastName FROM Emps", conn))
+            {
+                conn.Open();
+                using (SqlDataReader read = cmd.ExecuteReader())
+                {
+                    Console.WriteLine("EmployeeID|FirstName|LastName");
+                    while (read.Read())
+                    {
+                        Console.WriteLine($"{read["EmployeeID"]}         |{read["FirstName"]}     |{read["LastName"]}");
+                    }
+                }
+            }
+            conn.Close();
+        }
+    }
 
     public int FindNumberOfEmployees() 
     {
@@ -105,6 +124,7 @@ class Program()
         NewSql.AddEmployee("John","Doe");
         NewSql.AddEmployee("Jane", "Doe");
         NewSql.AddEmployee("Janet", "Jackson");
+        NewSql.PrintTable();
 
     }
 }
