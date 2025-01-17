@@ -68,6 +68,15 @@ class SqlConnector
         }
         this.sqlConnection.Close();
     }
+    public void DeleteEmployee() 
+    {
+       //continue here
+    }
+    public void UpdateEmployeeInfo() 
+    {
+        //continue here
+    }
+
     public void PrintTable() 
     {
         using (SqlConnection conn = new SqlConnection(this.ConnectionString))
